@@ -2,7 +2,6 @@
 using System.Text.Json;
 using VaultSharp;
 using VaultSharp.V1.AuthMethods.Token;
-using VaultSharp.V1.AuthMethods.UserPass;
 
 namespace ConsulAndVaultSample.VaultSharp;
 
