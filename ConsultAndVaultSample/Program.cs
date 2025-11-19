@@ -3,6 +3,10 @@ using ConsulAndVaultSample.VaultSharp;
 using Winton.Extensions.Configuration.Consul;
 
 var builder = WebApplication.CreateBuilder(args);
+var consulSettings = builder.Configuration.GetSection("ConsulConfiguration");
+var addresses = consulSettings.GetSection("Addresses").Get<string[]>();
+var key = consulSettings.GetValue<string>("Key");
+var healthyAddress= ConsulFailover.SelectHealthyConsul(addresses!);
 
 builder.Configuration.AddConsul(
     "ConsulAndVaultSample/Development/appsettings.json", // KV key in Consul
@@ -10,8 +14,7 @@ builder.Configuration.AddConsul(
     {
         options.ConsulConfigurationOptions = cco =>
         {
-            cco.Address = new Uri("http://localhost:8500");
-            cco.Token = "b3b71500-5bc1-5327-c4ef-dabe8fb037f7";
+            cco.Address = new Uri(healthyAddress);
         };
         options.Optional = true;        // fallback to local JSON
         options.ReloadOnChange = true;  // reload on KV change
