@@ -1,11 +1,10 @@
-# Consul + Vault + Winton.NET Sample  
-A minimal but enterprise-ready example showing **how to load configuration from Consul KV**, **Vault secrets**, and **auto‑reload settings** using the **Winton.Extensions.Configuration.Consul** package in .NET.
+# Consul + Vault + Winton.NET Sample 
 
-This README explains:
-
-- How the architecture works  
-- How to configure KV + Secrets  
-- How the .NET app loads configuration   
+### A minimal yet enterprise-grade example demonstrating how to:
+#### - Load application configuration from **Consul KV**
+#### - Retrieve secrets securely from HashiCorp Vault using the **VaultSharp** client
+#### - Auto-reload configuration on change using the **Winton.Extensions.Configuration.Consul** dynamic configuration provider
+All implemented cleanly in a modern **.NET application**.
 
 ---
 
